@@ -1,0 +1,525 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Segoe UI", sans-serif;
+}
+
+body {
+background: #f4f6f9;
+color: #333;
+}
+
+
+.center {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.authCard {
+background: white;
+width: 400px;
+padding: 40px;
+border-radius: 15px;
+box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.authCard h2 {
+margin-bottom: 10px;
+font-weight: 600;
+animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+.authCard input {
+width: 100%;
+padding: 12px;
+margin: 10px 0;
+border-radius: 8px;
+border: 1px solid #ddd;
+transition: all 0.3s ease;
+}
+
+.authCard input:focus {
+border-color: #4CAF50;
+outline: none;
+box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+transform: translateY(-2px);
+}
+
+.mainBtn {
+width: 100%;
+padding: 12px;
+margin-top: 10px;
+background: #4CAF50;
+border: none;
+color: white;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.mainBtn::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.3);
+transform: translate(-50%, -50%);
+transition: width 0.6s, height 0.6s;
+}
+
+.mainBtn:hover::before {
+width: 300px;
+height: 300px;
+}
+
+.mainBtn:hover {
+background: #43a047;
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.mainBtn:active {
+transform: translateY(0);
+}
+
+.roleSelect {
+display: flex;
+margin: 20px 0;
+gap: 10px;
+}
+
+.roleSelect button {
+flex: 1;
+padding: 10px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+background: #eee;
+transition: all 0.3s ease;
+}
+
+.roleSelect button:hover {
+background: #ddd;
+transform: scale(1.02);
+}
+
+.activeRole {
+background: #4CAF50 !important;
+color: white;
+animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.05);
+}
+}
+
+
+
+.dashboard {
+display: flex;
+height: 100vh;
+}
+
+
+.sidebar {
+width: 250px;
+background: #1e293b;
+color: white;
+padding: 30px 20px;
+display: flex;
+flex-direction: column;
+animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+from {
+transform: translateX(-100%);
+opacity: 0;
+}
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+
+.sidebar h2 {
+margin-bottom: 40px;
+font-size: 20px;
+animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.menuItem {
+padding: 12px;
+margin-bottom: 10px;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.menuItem::before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 3px;
+background: #4CAF50;
+transform: scaleY(0);
+transition: transform 0.3s ease;
+}
+
+.menuItem:hover::before {
+transform: scaleY(1);
+}
+
+.menuItem:hover {
+background: rgba(255,255,255,0.1);
+transform: translateX(5px);
+}
+
+.menuActive {
+background: #4CAF50;
+animation: slideInRight 0.4s ease-out;
+}
+
+@keyframes slideInRight {
+from {
+transform: translateX(-20px);
+opacity: 0;
+}
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+
+
+.main {
+flex: 1;
+padding: 30px;
+overflow-y: auto;
+animation: fadeIn 0.6s ease-out;
+}
+
+.topBar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 30px;
+animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+from {
+transform: translateY(-30px);
+opacity: 0;
+}
+to {
+transform: translateY(0);
+opacity: 1;
+}
+}
+
+.searchBar {
+padding: 8px;
+border-radius: 8px;
+border: 1px solid #ccc;
+width: 250px;
+transition: all 0.3s ease;
+}
+
+.searchBar:focus {
+outline: none;
+border-color: #4CAF50;
+box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+transform: translateY(-2px);
+}
+
+.cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 20px;
+margin-bottom: 30px;
+}
+
+.card {
+background: white;
+padding: 20px;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+animation: fadeInUp 0.6s ease-out both;
+position: relative;
+overflow: hidden;
+}
+
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(90deg, #4CAF50, #45a049);
+transform: scaleX(0);
+transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+transform: scaleX(1);
+}
+
+.card:nth-child(1) {
+animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+animation-delay: 0.4s;
+}
+
+.card:hover {
+transform: translateY(-8px) scale(1.02);
+box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+color: #4CAF50;
+}
+
+.card p {
+font-size: 32px;
+font-weight: bold;
+margin: 10px 0;
+transition: transform 0.3s ease;
+}
+
+.card:hover p {
+transform: scale(1.1);
+}
+
+
+table {
+width: 100%;
+border-collapse: collapse;
+background: white;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+animation: fadeInUp 0.6s ease-out;
+}
+
+th, td {
+padding: 12px;
+text-align: left;
+transition: all 0.3s ease;
+}
+
+th {
+background: #4CAF50;
+color: white;
+}
+
+tr {
+transition: all 0.3s ease;
+}
+
+tr:nth-child(even) {
+background: #f9f9f9;
+}
+
+tbody tr:hover {
+background: #e8f5e9;
+transform: scale(1.01);
+box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+
+
+.formCard {
+background: white;
+padding: 20px;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+margin-bottom: 30px;
+animation: fadeInUp 0.6s ease-out;
+}
+
+.formCard input, .formCard select {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border-radius: 8px;
+border: 1px solid #ddd;
+transition: all 0.3s ease;
+}
+
+.formCard input:focus, .formCard select:focus {
+outline: none;
+border-color: #4CAF50;
+box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+transform: translateY(-2px);
+}
+
+/* ANALYTICS */
+
+.analyticsFilters {
+margin-bottom: 20px;
+display: flex;
+gap: 10px;
+animation: fadeIn 0.6s ease-out;
+}
+
+.analyticsFilters button {
+padding: 8px 15px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+background: #ddd;
+transition: all 0.3s ease;
+}
+
+.analyticsFilters button:hover {
+background: #ccc;
+transform: translateY(-2px);
+box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.analyticsFilters .activeFilter {
+background: #4CAF50;
+color: white;
+animation: pulse 0.5s ease;
+}
+
+canvas {
+background: white;
+border-radius: 12px;
+padding: 20px;
+margin-bottom: 20px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+transition: all 0.3s ease;
+}
+
+canvas:hover {
+box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+
+.section {
+display: none;
+}
+
+.sectionActive {
+display: block;
+animation: fadeInContent 0.5s ease-out;
+}
+
+@keyframes fadeInContent {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+
+/* Smooth scrollbar */
+.main::-webkit-scrollbar {
+width: 8px;
+}
+
+.main::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+
+.main::-webkit-scrollbar-thumb {
+background: #4CAF50;
+border-radius: 4px;
+transition: background 0.3s ease;
+}
+
+.main::-webkit-scrollbar-thumb:hover {
+background: #45a049;
+}
+
+
+/* Loading animation for canvas */
+@keyframes chartFadeIn {
+from {
+opacity: 0;
+transform: scale(0.95);
+}
+to {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+
+@media(max-width: 900px) {
+.sidebar {
+width: 200px;
+}
+}
+
+@media(max-width: 700px) {
+.dashboard {
+flex-direction: column;
+}
+.sidebar {
+width: 100%;
+flex-direction: row;
+overflow-x: auto;
+animation: slideDown 0.5s ease-out;
+}
+}
